@@ -435,6 +435,8 @@ public class LocaleTracker extends Handler {
             // broadcast on forbidden channels.
             ((WifiManager) mPhone.getContext().getSystemService(Context.WIFI_SERVICE))
                     .setCountryCode(countryIso);
+            WifiManager wifi = (WifiManager)mPhone.getContext().getSystemService(Context.WIFI_SERVICE);
+            if(wifi != null) wifi.setCountryCode(countryIso);
 
             Intent intent = new Intent(TelephonyManager.ACTION_NETWORK_COUNTRY_CHANGED);
             intent.putExtra(TelephonyManager.EXTRA_NETWORK_COUNTRY, countryIso);
